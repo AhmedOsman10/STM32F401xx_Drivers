@@ -115,50 +115,52 @@ void RCC_init(void)
 
 void RCC_Peri_Enable(RCC_Preipherals P)
 {
-	if(P < 31)
-		RCC->AHB1ENR |= (1 << P);
-	else if(P < 39)
-		RCC->AHB2ENR |= (1 << (P - 31));
-	else if(P == 39)
-		RCC->AHB3ENR |= (1 << (P - 39));
-	else if(P < 70)
-		RCC->APB1ENR |= (1 << (P - 40));
-	else if(P < 79)
-		RCC->APB2ENR |= (1 << (P - 70));
-	else if(P < 118)
-		RCC->AHB1LPENR |= (1 << (P - 89));
-	else if(P < 126)
-		RCC->AHB2LPENR |= (1 << (P - 118));
-	else if(P == 126)
-		RCC->AHB3LPENR |= (1 << (P - 126));
-	else if(P <= 166)
-		RCC->APB1LPENR |= (1 << (P - 127));
-	else if(P <= 175)
-		RCC->APB2LPENR |= (1 << (P - 146));
+	unsigned char x = P;
+	if(x < 31)
+		RCC->AHB1ENR |= (1 << x);
+	else if(x < 39)
+		RCC->AHB2ENR |= (1 << (x - 31));
+	else if(x == 39)
+		RCC->AHB3ENR |= (1 << (x - 39));
+	else if(x < 70)
+		RCC->APB1ENR |= (1 << (x - 40));
+	else if(x < 89)
+		RCC->APB2ENR |= (1 << (x - 70));
+	else if(x < 118)
+		RCC->AHB1LPENR |= (1 << (x - 89));
+	else if(x < 126)
+		RCC->AHB2LPENR |= (1 << (x - 118));
+	else if(x == 126)
+		RCC->AHB3LPENR |= (1 << (x - 126));
+	else if(x < 156)
+		RCC->APB1LPENR |= (1 << (x - 127));
+	else if(x <= 175)
+		RCC->APB2LPENR |= (1 << (x - 156));
 }
 
 void RCC_Peri_Disable(RCC_Preipherals P)
 {
-	if(P < 31)
-		RCC->AHB1ENR &= ~(1 << P);
-	else if(P < 39)
-		RCC->AHB2ENR &= ~(1 << (P - 31));
-	else if(P == 39)
-		RCC->AHB3ENR &= ~(1 << (P - 39));
-	else if(P < 70)
-		RCC->APB1ENR &= ~(1 << (P - 40));
-	else if(P < 79)
-		RCC->APB2ENR &= ~(1 << (P - 70));
-	else if(P < 118)
-		RCC->AHB1LPENR &= ~(1 << (P - 89));
-	else if(P < 126)
-		RCC->AHB2LPENR &= ~(1 << (P - 118));
-	else if(P == 126)
-		RCC->AHB3LPENR &= ~(1 << (P - 126));
-	else if(P <= 166)
-		RCC->APB1LPENR &= ~(1 << (P - 127));
-	else if(P <= 175)
-		RCC->APB2LPENR &= ~(1 << (P - 146));
+	unsigned char x = P;
+	if(x < 31)
+		RCC->AHB1ENR &= ~(1 << x);
+	else if(x < 39)
+		RCC->AHB2ENR &= ~(1 << (x - 31));
+	else if(x == 39)
+		RCC->AHB3ENR &= ~(1 << (x - 39));
+	else if(x < 70)
+		RCC->APB1ENR &= ~(1 << (x - 40));
+	else if(x < 79)
+		RCC->APB2ENR &= ~(1 << (x - 70));
+	else if(x < 118)
+		RCC->AHB1LPENR &= ~(1 << (x - 89));
+	else if(x < 126)
+		RCC->AHB2LPENR &= ~(1 << (x - 118));
+	else if(x == 126)
+		RCC->AHB3LPENR &= ~(1 << (x - 126));
+	else if(x <= 156)
+		RCC->APB1LPENR &= ~(1 << (x - 127));
+	else if(x <= 175)
+		RCC->APB2LPENR &= ~(1 << (x - 156));
 }
 
 void RCC_External_Clock_MCO1(void)

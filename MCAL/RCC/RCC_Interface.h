@@ -14,7 +14,7 @@
 /* Marcos for RCC Peripherals */
 typedef enum
 {
-	GPIOA_EN,
+	GPIOA_EN = 0,
 	GPIOB_EN,
 	GPIOC_EN,
 	GPIOD_EN,
@@ -124,8 +124,8 @@ typedef enum
 	FSMCLPEN,
 
 	// RCC_APB1LPENR. from 127
-	TIM2LPEN,
-	TIM3LPEN = 128,
+	TIM2LPEN = 127,
+	TIM3LPEN,
 	TIM4LPEN,
 	TIM5LPEN,
 	TIM6LPEN,
