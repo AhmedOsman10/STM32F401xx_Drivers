@@ -115,6 +115,13 @@ void RCC_init(void)
 
 void RCC_Peri_Enable(RCC_Preipherals P)
 {
+	/*
+	 * The data type of the enum is 'signed char' (1 byte), which can hold values from -128 to 127.
+	 * Therefore, any enum value greater than 127 will appear as a negative number due to overflow.
+	 * To solve this issue, I created a variable of type 'unsigned char' 'x' to correctly interpret the enum value as a positive number.
+	 * In other words, this converts the negative representation back to its original positive value.
+	 */
+
 	unsigned char x = P;
 	if(x < 31)
 		RCC->AHB1ENR |= (1 << x);
