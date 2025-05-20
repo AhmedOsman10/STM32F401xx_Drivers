@@ -7,7 +7,7 @@
 
 #include "SYSTICK_Interface.h"
 
-void SYSTICK_voidInit(void)
+void Enable_SYSTICK(void)
 {
 	#if (SYSTICK_CLOCK_SOURCE == SYSTICK_AHB_DIV1)
 		SYSTICK->CTRL |= (1 << 2);
@@ -87,9 +87,15 @@ u32 SYSTICK_u32GetRemainingTime(void)
 /* This function pointer (Call_Function) is used to point to a function  that will be executed in the SYSTICK handler (e.g., toggling an LED). */
 void (*Call_Function)(void);
 
-void SYSTICK_voidEnableInterrupt(void)
+void SYSTICK_EnableInterrupt(void)
 {
 	SYSTICK->CTRL |= (1 << 1);
+}
+
+void SYSTICK_DisableInterrupt_and_Counter(void)
+{
+	SYSTICK->CTRL &= ~(1 << 1);
+	SYSTICK->CTRL &= ~(1 << 0);
 }
 
 void SYSTICK_voidStartCountMilliSeconds(u32 ms, void(*ptr)(void))
@@ -116,7 +122,7 @@ void SYSTICK_voidStartCountMicroSeconds(u32 us, void(*ptr)(void))
 void SysTick_Handler(void)
 {
 	Call_Function();
-	#if SYSTICK_INTERPUT == SYSTICK_NON_PERIODIC
+	#if SYSTICK_INTERPUT == SYSTICK_PERIODIC
 		SYSTICK->CTRL &= ~(1 << 0);
 	#endif
 }
