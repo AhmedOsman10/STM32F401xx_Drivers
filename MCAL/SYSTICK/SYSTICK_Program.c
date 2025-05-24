@@ -7,7 +7,7 @@
 
 #include "SYSTICK_Interface.h"
 
-void Enable_SYSTICK(void)
+void SYSTICK_init(void)
 {
 	#if (SYSTICK_CLOCK_SOURCE == SYSTICK_AHB_DIV1)
 		SYSTICK->CTRL |= (1 << 2);

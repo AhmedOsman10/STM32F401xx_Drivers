@@ -30,7 +30,7 @@ void GPIO_Speed(GPIO_RegDef_t *GPIO, GPIO_Pin_Number_t N,GPIO_Speed_t S)
 	GPIO->OSPEEDR |= (S << (2 * N));
 }
 
-void GPIO_Pull_Up_Pull_Down(GPIO_RegDef_t *GPIO, GPIO_Pin_Number_t N,GPIO_Speed_t P)
+void GPIO_Pull_Up_Pull_Down(GPIO_RegDef_t *GPIO, GPIO_Pin_Number_t N, GPIO_Pull_Up_Pull_Down_t P)
 {
 	GPIO->PUPDR &= ~(0b11 << (2 * N));
 	GPIO->PUPDR |= (P << (2 * N));

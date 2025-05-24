@@ -173,6 +173,4 @@ void RCC_Peri_Disable(RCC_Preipherals P);
 
 
 
-
-
 #endif /* RCC_RCC_INTERFACE_H_ */

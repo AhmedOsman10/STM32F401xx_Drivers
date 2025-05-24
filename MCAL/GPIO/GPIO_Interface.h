@@ -90,7 +90,7 @@ typedef enum
 void GPIO_Mode(GPIO_RegDef_t *GPIO, GPIO_Pin_Number_t N, GPIO_Mode_t M);
 void GPIO_Output_Type(GPIO_RegDef_t *GPIO, GPIO_Pin_Number_t N, GPIO_Output_Type_t O);
 void GPIO_Speed(GPIO_RegDef_t *GPIO, GPIO_Pin_Number_t N, GPIO_Speed_t S);
-void GPIO_Pull_Up_Pull_Down(GPIO_RegDef_t *GPIO, GPIO_Pin_Number_t N, GPIO_Speed_t P);
+void GPIO_Pull_Up_Pull_Down(GPIO_RegDef_t *GPIO, GPIO_Pin_Number_t N, GPIO_Pull_Up_Pull_Down_t P);
 int  GPIO_Input(GPIO_RegDef_t *GPIO, GPIO_Pin_Number_t N);
 void GPIO_Output_Data(GPIO_RegDef_t *GPIO, GPIO_Pin_Number_t N, GPIO_Output_Data_t O);
 void GPIO_Alternate_Function(GPIO_RegDef_t *GPIO, GPIO_Pin_Number_t N, GPIO_Alternate_Function_t F);

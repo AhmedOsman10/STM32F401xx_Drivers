@@ -45,10 +45,9 @@ void RCC_init(void)
 	// Wait until the clock is chosen
 	while(! (((RCC->CFGR >> 2) & 0b11) == RCC_SYSTEM_CLOCK));
 
-
 	/* Clock Security System */
 
-	/* Bus prescalers */
+	/* Bus Prescalers */
 	// Configure AHB Bus
 	RCC->CFGR &= ~(0b1111 << 4); // Clear the bits first
 	RCC->CFGR |=  (RCC_AHB_PRESCALER << 4); // Set the the Prescaler value
