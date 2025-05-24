@@ -12,13 +12,14 @@ int main(void)
     SSD_t ssd;
     ssd.port = GPIOA;
 
-    for (uint8_t i = 0; i < 7; i++)
+    for (uint8_t i = 0; i < 8; i++)
     {
         ssd.pinNumber[i] = i;
     }
 
     Button_init(&btn);
     SSD_init(&ssd);
+    SSD_DecimalPointTurnOn(&ssd);
 
     while (1)
     {
