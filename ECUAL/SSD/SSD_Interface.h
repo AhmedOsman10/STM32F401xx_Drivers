@@ -18,6 +18,7 @@ typedef struct{
 
 void SSD_init(SSD_t *ssd);
 void SSD_DisplayNumber(SSD_t *ssd, uint8_t number);
+void SSD_Off_Displaying(SSD_t *ssd);
 void SSD_DecimalPointTurnOn(SSD_t *ssd);
 void SSD_DecimalPointTurnOff(SSD_t *ssd);
 

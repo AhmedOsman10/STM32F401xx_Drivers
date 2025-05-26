@@ -36,7 +36,7 @@ void GPIO_Pull_Up_Pull_Down(GPIO_RegDef_t *GPIO, GPIO_Pin_Number_t N, GPIO_Pull_
 	GPIO->PUPDR |= (P << (2 * N));
 }
 
-int GPIO_Input(GPIO_RegDef_t *GPIO, GPIO_Pin_Number_t N)
+uint32_t GPIO_Input(GPIO_RegDef_t *GPIO, GPIO_Pin_Number_t N)
 {
 	return ((GPIO->IDR >> N) & 0b1);
 }

@@ -23,9 +23,23 @@ void Button_init(Button_t *btn)
  * @param btn Pointer to a Button_t structure.
  * @return uint8_t 1 if the button is pressed, 0 if not.
  */
-uint8_t Button_turnOn(Button_t *btn)
+uint8_t Button_Read(Button_t *btn)
 {
-	// Basic debounce: delay before reading input
-	SYSTICK_voidDelayMicroSec(1000); // ~1ms delay
 	return GPIO_Input(btn->port, btn->pinNumber);
+}
+
+uint8_t Button_Read_Debounce(Button_t *btn)
+{
+	uint8_t val1, val2;
+	val1 = GPIO_Input(btn->port, btn->pinNumber);
+	SYSTICK_voidDelayMicroSec(6);
+	val2 = GPIO_Input(btn->port, btn->pinNumber);
+
+	while(val1 != val2)
+	{
+		val1 = val2;
+		SYSTICK_voidDelayMicroSec(6);
+		val2 = GPIO_Input(btn->port, btn->pinNumber);
+	}
+	return val2;
 }

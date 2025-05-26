@@ -11,7 +11,7 @@ void SSD_init(SSD_t *ssd)
 {
 	for(uint8_t i = 0; i < 8; i++)
 	{
-		GPIO_Mode(ssd->port, ssd->pinNumber[i], GPIO_INPUT);
+		GPIO_Mode(ssd->port, ssd->pinNumber[i], GPIO_GENERAL_OUTPUT_PURPOSE);
 		GPIO_Output_Type(ssd->port, ssd->pinNumber[i], GPIO_PUSH_PULL);
 		GPIO_Speed(ssd->port, ssd->pinNumber[i], GPIO_LOW_SPEED);
 		GPIO_Pull_Up_Pull_Down(ssd->port, ssd->pinNumber[i], GPIO_NO_PULL_UP_NO_PULL_DOWN);
@@ -26,6 +26,10 @@ void SSD_DisplayNumber(SSD_t *ssd, uint8_t number)
 		GPIO_Output_Data(ssd->port, ssd->pinNumber[i], (numbers[number] >> i) & 1);
 	}
 	SYSTICK_voidDelayMilliSec(500);
+}
+
+void SSD_Off_Displaying(SSD_t *ssd)
+{
 	for(uint8_t i = 0; i < 7; i++)
 	{
 		GPIO_Output_Data(ssd->port, ssd->pinNumber[i], GPIO_RESET);

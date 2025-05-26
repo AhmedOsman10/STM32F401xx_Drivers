@@ -22,8 +22,8 @@ typedef struct {
 void Button_init(Button_t *btn);
 
 /* Reads the current state of the button.Returns 1 if the button is pressed, 0 if not. */
-uint8_t Button_turnOn(Button_t *btn);
-
+uint8_t Button_Read(Button_t *btn);
+uint8_t Button_Read_Debounce(Button_t *btn);
 
 
 #endif /* BUTTON_BUTTON_INTERFACE_H_ */
