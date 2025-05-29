@@ -112,7 +112,7 @@ void RCC_init(void)
 	#endif
 }
 
-void RCC_Peri_Enable(RCC_Preipherals P)
+void RCC_Peri_Enable(RCC_Preipherals_t P)
 {
 	/*
 	 * The data type of the enum is 'signed char' (1 byte), which can hold values from -128 to 127.
@@ -144,7 +144,7 @@ void RCC_Peri_Enable(RCC_Preipherals P)
 		RCC->APB2LPENR |= (1 << (x - 156));
 }
 
-void RCC_Peri_Disable(RCC_Preipherals P)
+void RCC_Peri_Disable(RCC_Preipherals_t P)
 {
 	unsigned char x = P;
 	if(x < 31)

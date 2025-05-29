@@ -162,14 +162,14 @@ typedef enum
 	 TIM9LPEN = 172,
 	 TIM10LPEN,
 	 TIM11LPEN
-}RCC_Preipherals;
+}RCC_Preipherals_t;
 
 
 void RCC_init(void); // Refer to the RCC_Config file to use this function properly. You need to choose "System Clock" and "Prescaler" for the AHB, APB1 and PPB2 Buses //
 void RCC_External_Clock_MCO1(void);
 void RCC_External_Clock_MCO2(void);
-void RCC_Peri_Enable(RCC_Preipherals P);
-void RCC_Peri_Disable(RCC_Preipherals P);
+void RCC_Peri_Enable(RCC_Preipherals_t P);
+void RCC_Peri_Disable(RCC_Preipherals_t P);
 
 
 

@@ -25,7 +25,7 @@ void SSD_DisplayNumber(SSD_t *ssd, uint8_t number)
 	{
 		GPIO_Output_Data(ssd->port, ssd->pinNumber[i], (numbers[number] >> i) & 1);
 	}
-	SYSTICK_voidDelayMilliSec(500);
+	SYSTICK_voidDelayMilliSec(1000);
 }
 
 void SSD_Off_Displaying(SSD_t *ssd)

@@ -1,3 +1,18 @@
+
+/*
+    This C code is designed to read input from a 4x4 keypad and display digits (0–9) on a 7-segment display.
+
+    🧠 Core Idea:
+    - Initializes system clock and SysTick timer.
+    - Enables GPIOA and GPIOD for SSD and Keypad respectively.
+    - Configures a 7-segment display with pins connected to GPIOA (PA0–PA7).
+    - Configures a 4x4 keypad with pins connected to GPIOD (PD0–PD7).
+    - Continuously checks for key presses:
+        - If a numeric key ('0' to '9') is pressed, the corresponding number is shown on the SSD.
+        - If a non-numeric key is pressed, the SSD blinks its decimal point to indicate invalid input.
+*/
+
+// Include necessary header files for RCC, SSD, Button, and Keypad modules
 #include "../MCAL/RCC/RCC_Interface.h"
 #include "../ECUAL/SSD/SSD_Interface.h"
 #include "../ECUAL/Button/Button_Interface.h"
@@ -5,51 +20,22 @@
 
 int main(void)
 {
+    /* Initialize System Clock
     RCC_init();
-    SYSTICK_init();
-    RCC_Peri_Enable(GPIOA_EN);
-    RCC_Peri_Enable(GPIOD_EN);
 
-    SSD_t ssd;
-    Keypad_t key;
-    ssd.port = GPIOA;
-    key.port = GPIOD;
+     Enable Peripheral Clocks
 
-    for (uint8_t i = 0; i < 8; i++)
+     Interrupt Configurations
+    SCB_InterruptPriorityConfig();
+    NVIC_SetPriority(IRQn, priority);
+
+     Interrupt Enable
+    NVIC_EnableIRQn(IRQn);
+
+     Enable Peripheral Interrupt
+
+    while(1)
     {
-        ssd.pinNumber[i] = i;
-    }
 
-    for (uint8_t i = 0; i < 8; i++)
-    {
-        key.pinNumber[i] = i;
-    }
-
-    SSD_init(&ssd);
-    Keypad_init(&key);
-    SSD_DecimalPointTurnOn(&ssd);
-    uint8_t key_val;
-
-	for (uint8_t i = 0; i < 10; i++)
-	{
-		SSD_DisplayNumber(&ssd, i);
-	}
-	SSD_Off_Displaying(&ssd);
-
-    while (1)
-    {
-    	key_val = Pressed_Key(&key);
-		// Only display digits '0' to '9'
-		if (key_val >= '0' && key_val <= '9')
-		{
-		   SSD_DisplayNumber(&ssd, key_val - '0');
-		}
-		else
-		{
-			SSD_DecimalPointTurnOn(&ssd);
-			SYSTICK_voidDelayMilliSec(1000);
-			SSD_DecimalPointTurnOff(&ssd);
-			SYSTICK_voidDelayMilliSec(1000);
-		}
-    }
+    }*/
 }
