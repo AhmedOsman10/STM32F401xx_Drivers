@@ -46,7 +46,7 @@ typedef struct
 }RCC_RegDef_t;
 
 
-#define RCC	 ((RCC_RegDef_t*)RCC_BASEADDR)
+#define RCC	 						 ((RCC_RegDef_t*)RCC_BASEADDR)
 
 
 #endif /* RCC_RCC_REGISTERS_H_ */

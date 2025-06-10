@@ -1,5 +1,4 @@
 /*
- * Button_EXTI_Interrupt_LED
  * Description:
  * This program initializes a button connected to pin PE3 and an LED connected to pin PA1.
  * When the button is pressed (triggering EXTI line 3), an interrupt is generated, and the LED blinks for 700 milliseconds.
